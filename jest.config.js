@@ -10,5 +10,6 @@ module.exports = {
     '^clappr$': '<rootDir>/node_modules/@clappr/core/dist/clappr-core.js',
     '^clappr-zepto$': 'clappr-zepto/zepto.js',
   },
+  testEnvironment: 'jsdom',
   globals: { CLAPPR_CORE_VERSION: ClapprCorePkg.version },
 }

@@ -7,7 +7,7 @@ import livereload from 'rollup-plugin-livereload'
 import serve from 'rollup-plugin-serve'
 import size from 'rollup-plugin-sizes'
 import { terser } from 'rollup-plugin-terser'
-import visualize from 'rollup-plugin-visualizer'
+const { visualizer } = require('rollup-plugin-visualizer')
 import { version as clapprCoreVersion } from '@clappr/core/package.json'
 import pkg from './package.json'
 
@@ -34,7 +34,7 @@ let plugins = [
 
 serveLocal && (plugins = [...plugins, replace({ ...replacePluginOptions, 'process.env.NODE_ENV': JSON.stringify('development') }), serve(servePluginOptions)])
 reloadEnabled && (plugins = [...plugins, livereload(livereloadPluginOptions)])
-analyzeBundle && plugins.push(visualize({ open: true }))
+analyzeBundle && plugins.push(visualizer({ open: true }))
 
 const mainBundle = {
   external: ['@clappr/core'],
